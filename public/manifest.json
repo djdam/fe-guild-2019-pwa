@@ -1,7 +1,6 @@
-const manifest = {
-
+{
     "name": "Progressive Selfies",
-    "short_name": "بطة وجه التطبيق",
+    "short_name":"بطة وجه التطبيق",
     "icons": [
         {
             "src": "src/images/icons/app-icon-48x48.png",
@@ -40,6 +39,7 @@ const manifest = {
         }
     ],
     "start_url": "/fe-guild-2019-pwa/index.html",
+    "scope": ".",
     "display": "standalone",
     "orientation": "portrait-primary",
     "background_color": "#fff",
@@ -47,25 +47,4 @@ const manifest = {
     "description": "Take selfies PWA style.",
     "dir": "ltr",
     "lang": "ar"
-
-};
-
-window.addEventListener('load', () => {
-    const base = document.querySelector('base');
-    let baseUrl = base && base.href || '';
-
-    if (!baseUrl.endsWith('/')) {
-        baseUrl = `${baseUrl}/`;
-    }
-
-    manifest['start_url'] = `${baseUrl}index.html`;
-
-    manifest.icons.forEach(icon => {
-        icon.src = `${baseUrl}${icon.src}`;
-    });
-
-    const stringManifest = JSON.stringify(manifest);
-    const blob = new Blob([stringManifest], {type: 'application/json'});
-    const manifestURL = URL.createObjectURL(blob);
-    document.querySelector('#manifestPlaceholder').setAttribute('href', manifestURL);
-});
+}
